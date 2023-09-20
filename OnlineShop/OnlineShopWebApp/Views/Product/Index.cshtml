@@ -1,0 +1,20 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6 card-shadow">
+        <img class="card-img-top" src="@Model.ImagePath">
+        <div class="card-body">
+            <h3>@Model.Name</h3>
+            <span class="badge rounded-pill bg-success">@Model.Cost рублей</span>
+            <h5>@Model.Description</h5>
+            <a class="btn btn-dark" href="/cart/add?productId=@Model.Id" role="button">Добавить в корзину</a>
+            <a class="btn btn-dark" href="/home" role="button">Продолжить покупки</a>
+        </div>
+    </div>
+    <div class="col-3"></div>
+</div>
