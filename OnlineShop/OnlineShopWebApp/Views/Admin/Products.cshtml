@@ -1,7 +1,44 @@
-﻿<div class="row">
+﻿@model List<Product>
+
+<div class="row">
 	@await Html.PartialAsync("AdminLeftMenu")
 
 	<div class="col-9">
-		<h3>Список Продуктов</h3>
+		<div class="row">
+			<h3>Список Продуктов</h3>
+		</div>
+		<a href="/admin/addProduct">Добавить новый продукт</a>
+
+		<div class="row">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>№</th>
+						<th>Название</th>
+						<th>Цена</th>
+						<th></th>
+						<th></th>
+					</tr>
+
+				</thead>
+				<tbody>
+					@for (int i = 0; i < Model.Count; i++)
+					{
+						<tr>
+							<td>@(i + 1)</td>
+							<td>
+								@Model[i].Name
+								<div class="col-1">
+									<img class="img-fluid" src="@Model[i].ImagePath">
+								</div>
+							</td>
+							<td>@Model[i].Cost</td>
+							<td><a href="/admin/editProduct?productId=@Model[i].Id">Редактировать</a></td>
+							<td><a href="/admin/removeProduct?productId=@Model[i].Id">Удалить</a></td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>

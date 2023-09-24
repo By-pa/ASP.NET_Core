@@ -1,0 +1,40 @@
+﻿@model Product
+@await Html.PartialAsync("AdminLeftMenu")
+<form method="post">
+	<div class="text-danger font-weight-bold" asp-validation-summary="ModelOnly"></div>
+	<div class="row">
+		<div class="col"></div>
+		<div class="col">
+			<div>
+				<h3>Создание нового продукта</h3>
+			</div>
+			<br />
+			<div class="form-floating">
+				<input class="form-control" asp-for="Name" />
+				<label asp-for="Name">Напишите название продукта</label>
+				<span asp-validation-for="Name"></span>
+			</div>
+			<br />
+			<div class="form-floating">
+				<input class="form-control" asp-for="Description" />
+				<label asp-for="Description">Напишите описпание продукта</label>
+				<span asp-validation-for="Description"></span>
+			</div>
+			<br />
+			<div class="form-floating">
+				<input type="number" class="form-control" asp-for="Cost" />
+				<label asp-for="Cost">Введите цену продукта</label>
+				<span asp-validation-for="Cost"></span>
+			</div>
+			<br />
+			<div class="form-floating">
+				<input class="form-control" asp-for="ImagePath" />
+				<label asp-for="ImagePath">Введите путь к изображению в формате "/images/capuccino.jpg"</label>
+				<span asp-validation-for="ImagePath"></span>
+			</div>
+			<br />
+			<button class="w-100 btn btn-lg btn-primary" type="submit" asp-controller="Admin" asp-action="AddProduct">Создать</button>
+		</div>
+		<div class="col"></div>
+	</div>
+</form>

@@ -30,22 +30,22 @@ namespace OnlineShopWebApp.Controllers
 				ModelState.AddModelError("", "Номер телефона может содержать только цифры и символы '+()-'");
 			}
 
-			if (ModelState.IsValid)
+			if (!ModelState.IsValid)
 			{
-				var existingCart = cartsRepository.TryGetByUserId(Constants.UserId);
-
-				var order = new Order
-				{
-					User = user,
-					Items = existingCart.Items,
-				};
-				ordersRepository.Add(order);
-
-				cartsRepository.Clear(Constants.UserId);
-				return View();
+				return RedirectToAction("Index", user);
 			}
+			var existingCart = cartsRepository.TryGetByUserId(Constants.UserId);
 
-			return RedirectToAction("Index", "Order");
+			var order = new Order
+			{
+				User = user,
+				Items = existingCart.Items,
+			};
+			ordersRepository.Add(order);
+
+			cartsRepository.Clear(Constants.UserId);
+			return View();
+			
 
 		}
 	}

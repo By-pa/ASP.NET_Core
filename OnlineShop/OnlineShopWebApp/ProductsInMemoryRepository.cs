@@ -27,7 +27,12 @@ namespace OnlineShopWebApp
 
         };
 
-        public List<Product> GetAll()
+		public void Add(Product product)
+		{
+			products.Add(product);
+		}
+
+		public List<Product> GetAll()
         {
             return products;
         }
@@ -37,5 +42,20 @@ namespace OnlineShopWebApp
             return products.FirstOrDefault(product => product.Id == id);
 
         }
-    }
+
+		public void Update(Product product)
+		{
+			var existingProduct = products.FirstOrDefault(x => x.Id == product.Id);
+            if(existingProduct == null) 
+            {
+                return;
+            }
+			existingProduct.Name = product.Name;
+			existingProduct.Description = product.Description;
+			existingProduct.Cost = product.Cost;
+			existingProduct.ImagePath = product.ImagePath;
+
+
+		}
+	}
 }

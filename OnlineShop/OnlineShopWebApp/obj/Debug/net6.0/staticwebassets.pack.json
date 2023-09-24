@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\images\\capuccino.jpg"
     },
     {
+      "Id": "D:\\Dev\\ASP.NET_Core\\OnlineShop\\OnlineShopWebApp\\wwwroot\\images\\castle.jpg",
+      "PackagePath": "staticwebassets\\images\\castle.jpg"
+    },
+    {
       "Id": "D:\\Dev\\ASP.NET_Core\\OnlineShop\\OnlineShopWebApp\\wwwroot\\images\\espresso.jpg",
       "PackagePath": "staticwebassets\\images\\espresso.jpg"
     },

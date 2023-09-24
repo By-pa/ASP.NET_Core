@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XP2nhHCfPpkLiToG8WJNKeE4RfFoy+gG4KXhsqBc/yY=",
+  "Hash": "zpVQxoX6JMwp6BK03Y2UmDxEe+3t3kln97D9qAZVNAQ=",
   "Source": "OnlineShopWebApp",
   "BasePath": "_content/OnlineShopWebApp",
   "Mode": "Default",
@@ -117,6 +117,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\capuccino.jpg"
+    },
+    {
+      "Identity": "D:\\Dev\\ASP.NET_Core\\OnlineShop\\OnlineShopWebApp\\wwwroot\\images\\castle.jpg",
+      "SourceId": "OnlineShopWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Dev\\ASP.NET_Core\\OnlineShop\\OnlineShopWebApp\\wwwroot\\",
+      "BasePath": "_content/OnlineShopWebApp",
+      "RelativePath": "images/castle.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\castle.jpg"
     },
     {
       "Identity": "D:\\Dev\\ASP.NET_Core\\OnlineShop\\OnlineShopWebApp\\wwwroot\\images\\espresso.jpg",
