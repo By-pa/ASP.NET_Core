@@ -1,0 +1,53 @@
+﻿@model Cart;
+
+@if(Model == null || Model.Items.Count == 0)
+{
+	<h3>Корзина пустая</h3>
+}
+else
+{
+	<div class="row">
+		<div class="col">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Название</th>
+						<th>Цена</th>
+						<th>Количество</th>
+						<th>Стоимость</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach(var item in Model.Items)
+					{
+						<tr>
+							<td>
+								<a style="color: navy" href="/product/index/@item.Product.Id"><p>@item.Product.Name</p></a>
+								<div class="col-1">
+									<img class="img-fluid" src="@item.Product.ImagePath">
+								</div>
+							</td>
+							<td>@item.Product.Cost руб.</td>
+							<td>@item.Amount</td>
+							<td>@item.Cost руб.</td>
+							<td>
+								<a class="btn btn-secondary" href="/cart/add?productId=@item.Product.Id" role="button">+</a>
+								<a class="btn btn-secondary" href="/cart/decreaseAmount?productId=@item.Product.Id" role="button">-</a>
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+			<div class="text-lg-end">
+				<h4>Итого: @Model.Cost руб.</h4>
+			</div>
+			<div class="text-center">
+				<a class="btn btn-primary" href="/home/index" role="button">Продолжить покупки</a>
+				<a class="btn btn-success" href="/order/index" role="button">Перейти к оформлению</a>
+				<a class="btn btn-danger" href="/cart/clear" role="button">Очистить корзину</a>
+			</div>
+		</div>
+	</div>
+}

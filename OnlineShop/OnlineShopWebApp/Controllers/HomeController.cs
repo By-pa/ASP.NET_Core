@@ -4,18 +4,26 @@ using System.Diagnostics;
 
 namespace OnlineShopWebApp.Controllers
 {
+
+   
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IProductsRepository productRepository;
+        private readonly ICartsRepository cartsRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IProductsRepository productRepository, ICartsRepository cartsRepository)
         {
-            _logger = logger;
+            this.productRepository = productRepository;
+            this.cartsRepository = cartsRepository;
         }
+
 
         public IActionResult Index()
         {
-            return View();
+            
+            var products = productRepository.GetAll();
+
+            return View(products);
         }
 
         public IActionResult Privacy()

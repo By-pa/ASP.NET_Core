@@ -2,8 +2,13 @@ html {
   font-size: 14px;
 }
 
+.myStyle {
+    overflow: hidden; width: 480px;
+    float: left; margin-right: 100px; margin-bottom: 140px;
+    width: 300px; height: 200px; object-fit: cover;
+}
 @media (min-width: 768px) {
-  html {
+    html {
     font-size: 16px;
   }
 }
