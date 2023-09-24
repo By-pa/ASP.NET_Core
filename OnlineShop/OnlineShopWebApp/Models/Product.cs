@@ -1,12 +1,18 @@
-﻿namespace OnlineShopWebApp.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace OnlineShopWebApp.Models
 {
     public class Product
     {
         private static int instatceCounter = 1;
         public int Id { get; }
+        [Required(ErrorMessage = "Не указано имя")]
+        [StringLength(25, MinimumLength = 2, ErrorMessage = "Имя должно содержать от 2 до 25 символов")]
         public string Name { get; }
-        public decimal Cost { get; }
-        public string Description { get; }
+		[Required(ErrorMessage = "Не указана цена")]
+		public decimal Cost { get; }
+		[Required(ErrorMessage = "Не указано описание")]
+		public string Description { get; }
 
         public string ImagePath { get; }
 
