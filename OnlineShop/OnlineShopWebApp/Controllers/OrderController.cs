@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShopWebApp.Models;
 
 namespace OnlineShopWebApp.Controllers
 {
@@ -16,12 +17,36 @@ namespace OnlineShopWebApp.Controllers
 		{
 			return View();
 		}
-		public IActionResult Buy()
+
+		[HttpPost]
+		public IActionResult Buy(UserDeliveryInfo user)
 		{
-			var existingCart = cartsRepository.TryGetByUserId(Constants.UserId);
-			ordersRepository.Add(existingCart);
-			cartsRepository.Clear(Constants.UserId);
-			return View();
+			if (!user.Name.All(c => char.IsLetter(c) || c == ' '))
+			{
+				ModelState.AddModelError("", "ФИО должны содержать только буквы");
+			}
+			if (!user.Phone.All(c => char.IsDigit(c) || "+()- ".Contains(c)))
+			{
+				ModelState.AddModelError("", "Номер телефона может содержать только цифры и символы '+()-'");
+			}
+
+			if (ModelState.IsValid)
+			{
+				var existingCart = cartsRepository.TryGetByUserId(Constants.UserId);
+
+				var order = new Order
+				{
+					User = user,
+					Items = existingCart.Items,
+				};
+				ordersRepository.Add(order);
+
+				cartsRepository.Clear(Constants.UserId);
+				return View();
+			}
+
+			return RedirectToAction("Index", "Order");
+
 		}
 	}
 }
