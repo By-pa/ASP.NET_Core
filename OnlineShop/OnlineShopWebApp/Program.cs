@@ -1,4 +1,5 @@
 using OnlineShopWebApp;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,10 @@ builder.Services.AddSingleton<IProductsRepository, ProductsInMemoryRepository>()
 builder.Services.AddSingleton<ICartsRepository, CartsInMemoryRepository>();
 builder.Services.AddSingleton<IRolesRepository, RolesInMemoryRepository>();
 builder.Services.AddControllersWithViews();
+
+builder.Host.UseSerilog((context, configuration) => configuration
+.ReadFrom.Configuration(context.Configuration)
+.Enrich.WithProperty("ApplicationName", "Online Shop"));
 
 var app = builder.Build();
 
@@ -27,6 +32,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSerilogRequestLogging();
 
 app.MapControllerRoute(
     name: "default",
